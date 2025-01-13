@@ -9,10 +9,82 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <h1>Example Student's Assignment 1!</h1>
-    <div class="header">
-      <img src="red-panda.jpg" />
-      <p>Here is all the documentation for assignment 1!</p>
-    </div>
+    <h1>Vincent's Assignment 1!</h1>
+    <h2>Schemetatic Design</h2>
+    <p>Here is the schematics for assignment 1</p>
+
+    <img src="schematics.png" />
+    <br>
+    <p>This schematics follows based off a parrallel circuit. This would allow each LED to 
+      blink independently.
+    </p>
+
+    <br>
+    <h2>Circuit</h2>
+    <img src="circuita1.png" />
+    <br>
+    <p>Here is the circuit for assignment 1. In this circuit, we are using a 220 ohm resistor. 
+      This was calculated by taking our voltage (5v) and subtracting the voltage of the LED (1.8) to get 3.8V
+      With the mA being 20 for the LED, it required 190 ohms. In our toolkit the resistor was 220 ohms and was
+      appropriate for our circuit.</p>
+
+    <br>
+    <h2>Code</h2>
+    <br>
+    <br />
+    <p>Below is the code used for this assignment:</p>
+    <pre><code>
+const int LED13 = 13; // Initializing the LED light on pin 13 on the Arduino Board
+const int LED12 = 12; // Initializing the LED light on pin 12 on the Arduino Board
+const int LED4 = 4;   // Initializing the LED light on pin 4 on the Arduino Board
+
+// the setup function runs once when you press reset or power the board
+void setup() {
+  // initialize digital pin LED_BUILTIN as an output.
+  pinMode(LED13, OUTPUT); // Sets the pin to behave as output pin for pin 13
+  pinMode(LED12, OUTPUT); // Sets the pin to behave as output pin for pin 12
+  pinMode(LED4, OUTPUT);  // Sets the pin to behave as output pin for pin 4
+}
+
+// the loop function runs over and over again forever
+void loop() {
+  digitalWrite(LED13, HIGH);  // Turning the first LED light on
+  delay(800);                 // Will wait for 800 milliseconds while on
+  digitalWrite(LED13, LOW);   // Turns off the LED light
+  delay(100);                 // Waits for 100 milliseconds
+  
+  digitalWrite(LED12, HIGH);  // Turning the second LED light on
+  delay(250);                 // Will wait for 250 milliseconds while on
+  digitalWrite(LED12, LOW);   // Turns off the LED light
+  delay(250);                 // Waits for 250 milliseconds
+  
+  digitalWrite(LED4, HIGH);   // Turning the third LED light on
+  delay(1000);                // Will wait for 1000 milliseconds while on
+  digitalWrite(LED4, LOW);    // Turns off the LED light
+  delay(1000);                // Waits for 1000 milliseconds
+}
+    </code></pre>
+<br>
+<h2>Circuit Operation</h2>
+<p>Below is a GIF of the circuit operation:</p>
+<img src = "gifa1.gif" />
+<br>
+<br>
+
+<h2>Additional Questions:</h2>
+<p>1. Draw a graph where the X axis is time and the Y axis is voltage across the LED's Draw a line for each of your 3 LED's</p>
+<br>
+<img src = "question1a1.png" />
+<br>
+
+<p>2. How many LED's could you blink independently with you Arduino? How much current would that draw?</p>
+<br>
+<p>Answer: 10 LED's could be blinked independently with the Arduino. The current would be 200 mA</p>
+<br>
+
+<p>3. How fast do you need to blink your LEDs until you no longer can tell that they are blinking?</p>
+<br>
+<p>Answer: 10ms</p>
+<br>
   </body>
 </html>
