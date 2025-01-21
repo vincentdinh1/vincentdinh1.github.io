@@ -9,10 +9,106 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <h1>Example Student's Assignment 2!</h1>
-    <div class="header">
-      <img src="red-panda.jpg" />
-      <p>Here is all the documentation for assignment 2!</p>
-    </div>
-  </body>
+    <h1>Vincent Dinh's Assignment 2!</h1>
+    <h2>Circtui Design</h2>
+    <p>Here is the circuit design for assignment 2</p>
+
+    <img src="a2circuit.PNG" />
+    <br>
+    <p>This circuit is controlled by the button. When the button is pressed, the blue LED will begin fading while the two other LED's stay on.
+      In this circuit, the button uses a 10k Ohm resistor, being powered on by pin3. The green LED's are connected to a 220 ohm resistor and powered
+      by pin 7/8. The blue LED is connected to a 100 ohm resistor and powered by pin 9.
+    </p>
+
+    <br>
+    <h2>Schemetatic</h2>
+    <img src="a2schematics.png" />
+    <br>
+    <p>Here is the schematic for the circuit..</p>
+
+    <br>
+    <h2>Code</h2>
+    <br>
+    <br />
+    <p>Below is the code used for this assignment:</p>
+    <pre><code>
+    // constants won't change. They're used here to set pin numbers:
+    const int buttonPin = 3;  // the number of the pushbutton pin
+    const int greenPin1 = 7;    // the number of the LED(green1) pin
+    const int greenPin2 = 8; // the number of the LED(green2) pin
+    const int bluePin = 9; // the number of the LED(blue) pin
+    
+    // variables will change:
+    int buttonState = 0;          // variable for reading the pushbutton status
+    int lastButtonState = LOW;    // variable to store the last button state
+    bool isFading = false;  
+    
+    void setup() {
+      // initialize the LED pins as an output:
+      pinMode(greenPin1, OUTPUT);
+      pinMode(greenPin1, OUTPUT);
+      pinMode(bluePin, OUTPUT);
+      // initialize the pushbutton pin as an input:
+      pinMode(buttonPin, INPUT);
+    }
+    
+    void loop() {
+      // read the current state of the button
+      buttonState = digitalRead(buttonPin);
+    
+      // check if the button state has changed (toggle behavior)
+      if (buttonState == HIGH && lastButtonState == LOW) {
+        isFading = !isFading;  // toggle fading state
+        delay(50);             // debounce delay
+      }
+    
+      // store the current button state 
+      lastButtonState = buttonState;
+    
+      if (isFading) {
+        // looping for fading in (getting brighter)
+        for (int brightness = 0; brightness <= 255; brightness++) {
+          analogWrite(bluePin, brightness);  // gradually increase brightness
+          delay(10);                         // small delay for smooth fading
+        }
+        // looping for fading out (getting dimmer)
+        for (int brightness = 255; brightness >= 0; brightness--) {
+          analogWrite(bluePin, brightness);  // gradually decrease brightness
+          delay(10);                         // small delay for smooth fading
+        }
+        // green LEDs stay on 
+        digitalWrite(greenPin1, HIGH);
+        digitalWrite(greenPin2, HIGH);
+      } else {
+        // Turn off the blue LED and keep the green LEDs solid
+        analogWrite(bluePin, 0);
+        digitalWrite(greenPin1, HIGH);  // steady ON state for green LEDs
+        digitalWrite(greenPin2, HIGH);
+      }
+    }
+    </code></pre>
+<br>
+<h2>Circuit Operation</h2>
+<p>Below is a GIF of the circuit operation:</p>
+<img src = "a2gif.gif" />
+<br>
+<br>
+
+<h2>Additional Questions:</h2>
+<p>1. Draw a graph where the X axis is time and the Y axis is voltage. Draw 3 lines representing the voltage across an LED with
+  analogWrite(led, 65), analogWrite(led, 128), and analogWrite(led, 255).
+</p>
+<br>
+<img src = "a2question1.png" />
+<br>
+
+<p>2. Given your schematic, circuit, and firmware, assuming the only thing that draws current is your LEDs, how long would your circuit run if powered by a 1200 mAh battery?</p>
+<br>
+<p>Answer: ~ 32 hours</p>
+<img src = "a2question2.png" />
+<br>
+
+<h2>Additional Work:</h2>
+<img src = "A2MathWork.png" />
 </html>
+
