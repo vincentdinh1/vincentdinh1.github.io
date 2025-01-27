@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+
+    <title>Example Student's HCDE 439 Physical Computing Page!</title>
+
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>Vincent Dinh's Assignment 3!</h1>
+    <h2>Circuit Design</h2>
+    <p>Here is the circuit design for assignment 3</p>
+
+    <img src="a3circuitimg.jpg" />
+    <br>
+    <p>This circuit is controlled by a photoresistor. When the photoresistor is in the dark, the blue LED will be on and the RED LED will be off. 
+      When the photoresistor is in the light, the blue LED will be off and the RED LED will be off.
+      In this circuit, the photoresistor is connected to pin A0 and uses a 10k Ohm resistor. The blue LED is connected to a 100 ohm resistor and powered
+      by pin 11. The RED LED is connected to a 220 ohm resistor and powered by pin 6. Below is the calculations for each of the resistors
+    </p>
+
+    <br>
+    <img src="a3mathdocu.png" />
+
+
+    <br>
+    <h2>Schemetatic</h2>
+    <img src="a3schematic.png" />
+    <br>
+    <p>Here is the schematic for the circuit.</p>
+
+    <br>
+    <h2>Code</h2>
+    <br>
+    <br />
+    <p>Below is the code used for this assignment:</p>
+    <pre><code>
+      int sensorValue = 0; // initializing the value for the sensor
+      int outputValue = 0; // initializing the value for the output LED (BLUE)
+      int redLED = LOW; // initiliazing the red output LED to be off
+      
+      
+      void setup() {
+        // put your setup code here, to run once:
+        Serial.begin(9600);
+        pinMode(11, OUTPUT); // setting the pin 11 (blue led) to be the output
+        pinMode(6, OUTPUT); // setting the pin 6 (red LED) to be the output
+      }
+      
+      void loop() {
+        // put your main code here, to run repeatedly:
+          sensorValue = analogRead(A0); // gathering input from the photoresistor 
+      
+          if (sensorValue > 350) { // if the sensor reads more than 350 it will go into this if statment
+            outputValue = map(sensorValue, 350, 1023, 250, 0);  // basically translating to how much light is being aborbed from the sensor, it will provide the duty cycle for the LED
+            analogWrite(11, outputValue); // when there is significant light, the blue Led will turn on 
+      
+            analogWrite(6, LOW); // the red LED will stay off when it's currently meeting the conditions of the sensor value
+            redLED = LOW;
+      
+          } else { // if it doesn't meet that threshold, then automatically the blue led will turn off and the red one will turn on 
+            analogWrite(11, 0);
+            analogWrite(6, HIGH);
+            redLED = HIGH;
+          }
+      
+          Serial.print("Sensor input: "); // reading how much light we are getting from the photoresistor
+          Serial.println(sensorValue);
+      
+          Serial.print("LED Blue: "); // reading how much output the blue LED is getting 
+          Serial.println(outputValue);
+      
+          if (redLED == HIGH) { // determining whether the Red LED is on or off. 
+            Serial.println("LED Red: ON");  
+          } else {
+            Serial.println("LED Red: OFF");
+          }
+      
+          Serial.println("");
+          delay(150);
+      }
+      
+    </code></pre>
+<br>
+<h2>Circuit Operation</h2>
+<p>Below is a GIF of the circuit operation along with the serial monitor:</p>
+<img src = "a3circuit.gif" />
+<br>
+<img src = "a3serial.gif" />
+<br>
+
+<h2>Additional Questions:</h2>
+<p>1. In your voltage divider, can the variable resistor be either R1 or R2 or does it need to be 
+  one or the other? Justify your answer with example calculations.
+</p>
+<br>
+<img src = "a3question1.png" />
+<br>
+
+<p>2. Draw a graph where the x-axis is time and the y-axis is voltage. Plot the voltage at V-measure of your voltage divider of your shared gif</p>
+<br>
+<img src = "a3question2.png" />
+<br>
+
+<p>3. AnalogWrite and analogRead are respectively 8-bit and 10-bit values. Imagine you had 10-bit PWM and a 
+  16-bit analog-to-digital converter instead. How would this change your map() code? Explain your answer.</p>
+  <br>
+  <p>Answer: It would change my map code by changing my analogWrite from 0-255 to 0 1023
+    As well as my analogRead from 0 - 1023 to 0-65545. In turn what this does is increase the mapping to a higher resolution. This would provide smoother transitions for LED fading. This would also provide more accuracy.</p>
+
