@@ -11,12 +11,12 @@
   <body>
     <h1>Final Project Documentation!</h1>
     <h2>LumiLamp:</h2>
-    <h3>Concept"</h3>
+    <h3>Concept</h3>
     <p>This project aims to create a lamp that responds to touch. Everytime a user makes contact with the metal button, the lamp will change color. The lamp also comes 
         with a  tactile button that can be used to turn the lamp on/off. While the project sounds like a regular lamp, it serves as a fun and inexpensive way to decorate
         and light up a room to my own liking.   
     </p>
-
+    <br>
     <img src="finishedlamp.jpg" />
     <br>
     <h2>How I Made It</h2>
@@ -26,20 +26,19 @@
 
     <br>
     <h2>Bill of Materials</h2>
-    <br>
     <p>Arduino
-        Power Supply (9v)
-        Power Module 
-        Button
-        Alligator Clips + Wires / Resistors 
-        Cardstock 
-        Frosted Translucent Plastic Sheets
-        RGB Light Strip
+        Power Supply (9v), 
+        Power Module, 
+        Button, 
+        Alligator Clips + Wires / Resistors, 
+        Cardstock, 
+        Frosted Translucent Plastic Sheets, 
+        RGB Light Strip, &
         Metal Lid 
         </p>
     <br>
     <h2>Schematics</h2>
-    <img src="finalschematics.png" />
+    <img src="finalschematic.png" />
     <br>
     <p>In this schematic, I used a 9v power supply to power the RGB light strip. However, because the LED strip was 5V, I used a power module to convert the 9v to 5v. To control the LED strip, the LED was connected to pin 9 on the arduino.
         For the button, it was connected to pin 13 using a 10k ohm resistor. The capacitive touch sensor was connected to pin 5 and 6 on the arduino  using a 1 megaohm resistor. 
@@ -57,15 +56,16 @@
     <br>
     <h2>My Circuit</h2>
     <img src="finalcircuit.jpg" />
+    <br>
     <p>For my lamp, I designed a system where it would change color with the user touch and a button to turn on/off the lights.</p>
     <p>The input device for the system is the capactive touch sensor which is connected through alligator clips, which are attatched to a metal lid (off-screen)
         The sensor is connected to pin 6 & 5 on the arduino, which usesa 1 megaohm resistor. The other input device is the button, which is connected to pin 13 on the arduino. The button uses a 10k ohm resistor.
         With the LED strip, it is powered by a 9v power supply, which is modulated by a power module to convert it into 5V. The LED strip is connected to pin 9 on the arduino.
     </p>
- 
+
+    <br>
     <h2>Code</h2>
     <br>
-    <br />
     <p>Below is the code used for this assignment:</p>
     <pre><code>
         #include &lt;tCapacitiveSensor.h&gt;
@@ -153,42 +153,42 @@
 <p>After getting the code to work as intended, I started building the casing for the lamp. Using cardstock and frosted translucent plastic sheets, I created the casing for the lamp.
     The cardstock was cut to fit the breadboard and arduino while giving enough wiggle room for any adjustments. The cardstock was cut to "slot" into one another and hot glued together
     as extra support for the bottom casing. The frosted translucent plastic sheets were cut to fit the casing and hot glued together as well. </p>
-
+<br>
 <img src = "cardstock_casing.jpg" />
-
+<br>
 <p>After ensuring the sheets were a snug fit with the casing, I outlined the metal lid to the top of the plastic sheet casing and cut it out to fit the lid. However, the outline was purposely cut 
     smaller than the actual lid to ensure that the lid would stay on tightly. 
 </p>
 <img src = "plastic_casing.jpg" />
-
+<br>
 <p>*An aluminum wrapped lid was used temporarily to ensure proper implementation</p>
-
+<br>
 <img src = "caplid.jpg" />
-
+<br>
 <p>
 However, the next challenge to ensure position the bredboard and arduino to where it was still snug, while making sure none of the wiring came loose. By hot glueing support braces 
 to ensure stability for the bread board, I came across an issue where the arduino was too short to ensure that any wires weren't coming loose. After glueing pieces of cardstock to act
 as a platform, both the aruduino and breadboard were held in place. 
-
+<br>
 </p> Next, I outlined the position of the button to cut into. After the button was cut out, I created a cardstock stick that acted as the physical button for users to press. When pressed,
 would press the button on the breadboard. 
 </p>
-
+<br>
 <p> Following the button, the cable entry for the power module and usb cable for the aruduino was cut out.
 </p>
-
+<br>
 <p>However, my biggest challenge was calibration, this was due to the sensitivity of capacitive touch sensor as sometimes it would jump and flash to different colors if touched in weird 
     positions/angles. After some trial and error, the touch sensitivity was calibrated to ensure that would work as intended.
 </p>
-
+<br>
 <p>Lastly, mini support brackets were created to ensure that the plastic casing cover would not slide off now that the LED strip was attatched inside the case it would rub against the casings
     walls.
 </p>
-
+<br>
 <h2>Here is the finished lamp!</h2>
 <img src = "finnishedlamp.jpg" />
 <br>
-
+<br>
 <h2>Demo Video:</h2>
 <iframe width="560" height="315" 
         src="https://www.youtube.com/embed/AC_3bosqFR4D" 
@@ -196,7 +196,8 @@ would press the button on the breadboard.
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
         allowfullscreen>
 </iframe>
-<a href="https://www.youtube.com/watch?v=AC_3bosqFR4" target="_blank">Watch My Video</a>
+<br>
+<a href="https://www.youtube.com/watch?v=AC_3bosqFR4" target="_blank">Click here incase the video doesn't load</a>
 
 
   </body>
